@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from '../layouts/Layout.astro';
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug"
@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 const last_posts = posts.slice(0, 3);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
+<Layout>
   <div class="pb-12 mt-5">
     <div class="text-xl py-1">HI!</div>
     <div class="text-5xl font-bold">I'm Shams</div>
@@ -100,4 +100,21 @@ const last_posts = posts.slice(0, 3);
       </>
     ))
 }-->
-</BaseLayout>
+
+  <!-- Theme selector dropdown -->
+  <select id="theme-selector">
+    <option value="dark">Dark</option>
+    <option value="light">Light</option>
+    <option value="retro">Retro</option>
+    <option value="forest">Forest</option>
+    <option value="aqua">Aqua</option>
+    <option value="black">Black</option>
+    <option value="luxury">Luxury</option>
+    <option value="dracula">Dracula</option>
+    <option value="night">Night</option>
+    <option value="coffee">Coffee</option>
+  </select>
+
+  <!-- Include the theme-switcher JavaScript file -->
+  <script src="/theme-switcher.js"></script>
+</Layout>
